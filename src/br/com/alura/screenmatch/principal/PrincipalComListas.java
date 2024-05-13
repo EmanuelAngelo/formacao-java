@@ -5,6 +5,9 @@ import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
@@ -23,8 +26,20 @@ public class PrincipalComListas {
         lista.add(lost);
         for (Titulo item: lista){
             System.out.println(item.getNome());
-            Filme filme = (Filme) item;
-            System.out.println("Classificacao " + filme.getClassificacao());
+            if (item instanceof Filme filme && filme.getClassificacao() > 2){
+                System.out.println("Classificacao " + filme.getClassificacao());
+            }
         }
+        ArrayList<String> buscaPorArtista = new ArrayList<>();
+        buscaPorArtista.add("Adam Sandler");
+        buscaPorArtista.add("Paulo");
+        buscaPorArtista.add("Jaccueliune");
+        System.out.println(buscaPorArtista);
+        Collections.sort(buscaPorArtista);
+        System.out.println(buscaPorArtista);
+        Collections.sort(lista);
+        System.out.println(lista);
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println(lista);
     }
 }
